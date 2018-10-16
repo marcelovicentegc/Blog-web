@@ -1,5 +1,5 @@
 from django.contrib import admin
-from en.models import PostModel, ContactModel, TopicModel
+from en.models import PostModel, TopicModel
 
 
 

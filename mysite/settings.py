@@ -146,7 +146,7 @@ EMAIL_USE_SSL = False
 
 '''
 If using gmail, unlock Captcha to enable
-Django to access it:
+Django to access it. Read:
 https://accounts.google.com/displayunlockcaptcha or
 https://myaccount.google.com/u/2/security#connectedapps
 '''

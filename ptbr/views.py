@@ -15,13 +15,8 @@ class BlogListView(ListView):
     template_name = 'ptbrblog/newsfeed.html'
     posts = PostModel.objects.all()
     topics = TopicModel.objects.all()
-    # paginate_by = 3
+    # paginate_by = ...
     queryset = posts.order_by('-date') # [:25]
-    
-#    def get_queryset(self):
- #       self.postmodel = get_object_or_404(PostModel)
-  #      self.topicmodel = get_object_or_404(TopicModel)
-   #     return self.postmodel, self.topicmodel
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

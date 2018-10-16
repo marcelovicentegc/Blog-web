@@ -8,4 +8,3 @@ urlpatterns = [
     re_path(r'^blog/$', BlogListView.as_view()),
     re_path(r'^blog/(?P<pk>\d+)/$', BlogDetailView.as_view()),
 ] 
-# (?P<title>[\w-]+)/$

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='eng'>
+<head>
+    {% load static %}
+    <title> {{object.title}} | Marcelo Cardoso </title>
+    <meta charset='utf8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='shortcut icon' type='image/png' href='/static/index/img/m.jpg' sizes='32x32'/>
+    <link rel='stylesheet' type='text/css' href="{% static 'blog/css/main_post.css'%}"/>
+    <script src="{% static 'home/js/jquery-3.3.1.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $.fn.bodyFadeOut = function() {
+			    var body = $('body');
+    			body.css('animation-name', 'fadeOut');
+	        	body.css('animation-duration', '200ms');
+    	        body.css('animation-timing-function', 'ease-in-out');
+        	    body.css('animation-iteration-count', '1');
+        		body.css('animation-fill-mode', 'forwards');
+                body.css('animation-play-state', 'running');
+		    };
+        });
+
+        $(document).ready(function() { 
+            var blogButton = $('#blog-button');
+            var toggleContainer = $('#toggle-container');
+            var lastScroll = 0;
+
+            blogButton.click(function() {
+                $.fn.bodyFadeOut();
+                setTimeout(function() {
+					window.location.href='/en/blog/'},
+				200);
+            });
+
+            $(document).scroll(function() {
+                var currentScroll = $(this).scrollTop();
+                if (currentScroll > lastScroll) {
+                    toggleContainer.css('padding', '25px 30px');
+                } else { 
+                    toggleContainer.css('padding', '30px');
+                }
+                lastScroll = currentScroll;  
+            });
+        });
+    </script>
+</head>
+
+<body id='top'>    
+    <div id='toggle-sidebar-wrapper'>
+        <div id='toggle-wrapper'>
+            <div id='toggle-container'>
+                <a class='button' id='blog-button' aria-hidden='true'><</a>
+            </div>
+        </div>
+    </div>
+
+    <div id='essay-wrapper'>
+        <h2 class='essay-title'><a name='published-essay' id='{{post.id}}'>{{object.title}}</a></h2>
+        <p class='essay-date'>{{ object.date|date:"M d, Y" }}</p>
+        <div class='essay'>{{ object.body|safe|linebreaks }}</div>
+        <div class='mona-lisa'>
+            <a><img src="{{ object.image.url }}"></a>
+        </div>
+    </div>
+    {% comment %}
+        DISQUS goes here
+    {% endcomment %}
+</body>
+</html>
+

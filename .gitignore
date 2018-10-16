@@ -1,0 +1,16 @@
+.vscode
+
+*.pyc
+__pycache__
+
+en/migrations/*.py
+ptbr/migrations/*.py
+home/migrations/*.py
+home/templates/admin/*
+media/blog/*
+
+*.scss
+*.css.map
+
+admin.txt
+db.sqlite3

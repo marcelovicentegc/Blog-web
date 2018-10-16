@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P|VT323");
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    background: #000;
+  }
+  100% {
+    opacity: 0;
+    background: #fff;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    background: #000;
+  }
+  100% {
+    opacity: 0;
+    background: #fff;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background: #fff;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+body p {
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+body p a {
+  text-decoration: none;
+  color: #000;
+  font-size: 4vw;
+  text-transform: lowercase;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+@media (max-width: 479px) {
+  body p a {
+    font-size: 5vw;
+  }
+}
+
+body p a:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+body p .separator:hover {
+  color: #000;
+  cursor: default;
+}
+
+::-moz-selection {
+  background: #f03838;
+}
+
+::selection {
+  background: #f03838;
+}
+/*# sourceMappingURL=main.css.map */

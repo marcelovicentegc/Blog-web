@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+	{% load static %}
+    <title> Marcelo Cardoso </title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+	<link rel='shortcut icon' type='image/png' href='/static/index/img/m.jpg' sizes='32x32'/>
+	<link rel='stylesheet' href="{% static 'index/css/main.css' %}" type='text/css'/>
+	<link rel='stylesheet' href="{% static 'index/css/all.min.css' %}" type='text/css'>
+	<script src="{% static 'home/js/three.js' %}"></script>
+	<script src="{% static 'home/js/jquery-3.3.1.js' %}"></script>
+	<script>		
+		$(document).ready(function() {
+			$.fn.insideFadeOut = function() {
+				var front = $('#front');
+				front.css('animation-name', 'fadeOut');
+				front.css('animation-duration', '200ms');
+				front.css('animation-timing-function', 'ease-in-out');
+				front.css('animation-iteration-count', '1');
+				front.css('animation-fill-mode', 'forwards');
+				front.css('animation-play-state', 'running');
+				front.css('animation-transition', '100ms');
+			};
+
+			$.fn.bodyFadeOut = function() {
+				var body = $('body');
+				body.css('animation-name', 'fadeOut');
+    	    	body.css('animation-duration', '200ms');
+    	        body.css('animation-timing-function', 'ease-in-out');
+    	        body.css('animation-iteration-count', '1');
+        		body.css('animation-fill-mode', 'forwards');
+            	body.css('animation-play-state', 'running');
+			};
+
+			$.fn.openBox = function(box) {
+                setTimeout(function() {
+                    box.css('display', 'block');
+                }, 200);
+                box.css('animation-name', 'fadeIn');
+                box.css('animation-duration', '200ms');
+                box.css('animation-timing-function', 'ease-in-out');
+                box.css('animation-iteration-count', '1');
+                box.css('animation-direction', 'alternate');
+                box.css('animation-fill-mode', 'forwards');
+                box.css('animation-play-state', 'running');
+            };
+
+            $.fn.closeBox = function(box) {
+                box.css('animation-name', 'fadeOut');
+                box.css('animation-duration', '200ms');
+                box.css('animation-timing-function', 'ease-in-out');
+                box.css('animation-iteration-count', '1');
+                box.css('animation-direction', 'alternate');
+                box.css('animation-fill-mode', 'forwards');
+                box.css('animation-play-state', 'running');
+                setTimeout(function() {
+                    box.css('display', 'none');	
+                }, 200);
+            };
+		});
+
+		$(document).ready(function() {
+			var homeButton = $('#home-button');
+			var contactButton = $('#contact-button');
+			var blogButton = $('#blog-button');
+			var contactMenu = $('#contact-menu');
+			var h1 = $('h1');
+
+			homeButton.click(function() {
+				$.fn.bodyFadeOut();
+				setTimeout(function() {
+					window.location.href='/'},
+				200);
+			});
+
+			contactButton.click(function() {
+				if (contactMenu.css('display') == 'none') {
+					$.fn.closeBox(h1); 
+					$.fn.openBox(contactMenu); 
+				} else {
+					$.fn.openBox(h1);
+					$.fn.closeBox(contactMenu);
+				}
+			});
+		
+			blogButton.click(function() {
+				$.fn.bodyFadeOut();
+				setTimeout(function() {
+					window.location.href='/pt-br/blog/'},
+				200);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id='wrapper'>
+		<header>
+			<div id='menu'>
+				<a id='home-button'><</a>
+				<a id='contact-button'>contato</a>
+				<a id='blog-button'>blog</a>
+			</div>
+		</header>
+		<div id='front'>
+			<h1>OLÁ, EU SOU O MARCELO</h1>
+			<div id='contact-menu'>
+				<li>
+					<a href='mailto:its@marcelo.page'><i class="fas fa-envelope"></i></a>
+					<a href='https://github.com/marcelovicentegc' target='_blank'><i class='fab fa-github'></i></a>
+					<a href='https://www.linkedin.com/in/marcelo-cardoso-b77261144/' target='_blank'><i class='fab fa-linkedin-in'></i></a>
+					<a href='https://www.strava.com/athletes/35289893' target='_blank'><i class='fab fa-strava'></i></a>
+				</li>
+			</div>
+		</div>
+		<div id='pegafrito'>
+		</div>
+	</div>
+	<script>
+		var camera, scene, renderer;
+		var geometry, material, mesh;
+					
+		function init() {
+			container = document.getElementById('pegafrito');
+
+			camera = new THREE.PerspectiveCamera(75, container.clientWidth/container.clientHeight, 0.1, 10);
+			camera.position.z = 1;
+
+			scene = new THREE.Scene({
+				autoUpdate: true
+			})
+			scene.background = new THREE.Color(0xffffff);
+							
+			// TorusKnotGeometry looks nice
+			// Background + diamond-like surface looks nice
+			geometry = new THREE.SphereGeometry(.5, 15, 21);
+			material = new THREE.MeshBasicMaterial({
+				color: 0x000000, wireframe: true
+			})
+			mesh = new THREE.Mesh(geometry, material);
+			scene.add(mesh);
+
+			renderer = new THREE.WebGLRenderer({
+				antialias: true
+			});
+
+			renderer.setSize(container.clientWidth, container.clientHeight);
+			container.appendChild(renderer.domElement);
+				
+		};
+
+		function animate(time) {
+			mesh.rotation.x = time * 0.0008;
+			mesh.rotation.y = time * 0.0006;
+
+			renderer.render(scene, camera);
+			requestAnimationFrame(animate);
+		};
+	
+		init();
+		requestAnimationFrame(animate);
+					
+		window.addEventListener('resize', function () {
+			renderer.setSize(container.clientWidth, container.clientHeight);
+  				camera.aspect = container.clientWidth / container.clientHeight;
+  				camera.updateProjectionMatrix();
+		});
+	</script>
+</body>
+</html>

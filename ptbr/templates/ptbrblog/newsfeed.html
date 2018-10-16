@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang='eng'>
+<head>
+    {% load static %}
+    <title> Passagens | Marcelo Cardoso </title>
+    <meta charset='utf8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='shortcut icon' type='image/png' href='/static/index/img/m.jpg' sizes='32x32'/>
+    <link rel='stylesheet' type='text/css' href="{% static 'blog/css/main.css'%}"/>
+    <script src="{% static 'home/js/jquery-3.3.1.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $.fn.bodyFadeOut = function() {
+			    var body = $('body');
+    			body.css('animation-name', 'fadeOut');
+	        	body.css('animation-duration', '200ms');
+    	        body.css('animation-timing-function', 'ease-in-out');
+        	    body.css('animation-iteration-count', '1');
+        		body.css('animation-fill-mode', 'forwards');
+                body.css('animation-play-state', 'running');
+		    };
+        });
+
+        $(document).ready(function () {
+            $.fn.closePublicationContained = function(publicationContained) {
+                publicationContained.css('animation-name', 'fadeOut');
+                publicationContained.css('animation-duration', '200ms');
+                publicationContained.css('animation-timing-function', 'ease-in-out');
+                publicationContained.css('animation-iteration-count', '1');
+                publicationContained.css('animation-direction', 'alternate');
+                publicationContained.css('animation-fill-mode', 'forwards');
+                publicationContained.css('animation-play-state', 'running');
+                setTimeout(function() {
+                    publicationContained.css('display', 'none');
+                }, 200);
+            };
+
+            $.fn.openPublicationContained = function(publicationContained) {
+                setTimeout(function() {
+                    publicationContained.css('display', 'block');
+                }, 200);
+                publicationContained.css('position', 'absolute');
+                publicationContained.css('animation-name', 'fadeIn');
+                publicationContained.css('animation-duration', '200ms');
+                publicationContained.css('animation-timing-function', 'ease-in-out');
+                publicationContained.css('animation-iteration-count', '1');
+                publicationContained.css('animation-direction', 'alternate');
+                publicationContained.css('animation-fill-mode', 'forwards');
+                publicationContained.css('animation-play-state', 'running');
+            };
+        });
+
+        $(document).ready(function() { 
+            var toggleContainer = $('#toggle-container');
+            var sideBarWrapper = $('#sidebar-wrapper');
+            var toggleButton = $('#toggle-button');
+            var indexButton = $('#index-button');
+            var essayButton = $('.essay-title');
+            var closeSidebarButton = $('.close-sidebar-button');
+            var closeSidebarPostButton = $('.close-sidebar-button-post');
+            var lastScroll = 0;
+            var scrollLink = $('.scroll');
+
+        
+
+            toggleButton.click(function() {
+				sideBarWrapper.css('right', '0px');
+                toggleContainer.css('display', 'none');
+			});
+
+            indexButton.click(function() {
+                $.fn.bodyFadeOut();
+                setTimeout(function() {
+					window.location.href='/pt-br/'},
+				200);
+            });
+
+            essayButton.click(function() {
+                $.fn.bodyFadeOut();
+                setTimeout(function() {
+					window.location.href='/pt-br/blog/{{post.id}}'},
+				200);
+            });
+
+            closeSidebarButton.click(function () {
+                sideBarWrapper.css('right', '-424px');
+                toggleContainer.css('display', 'block');
+                toggleContainer.css('width', '80px');  
+                toggleContainer.css('height', '80px');  
+                toggleContainer.css('padding', '25px 30px');
+            });
+            
+            closeSidebarPostButton.click(function () {
+                sideBarWrapper.css('right', '-424px');
+                toggleContainer.css('display', 'block');
+                toggleContainer.css('width', '80px');  
+                toggleContainer.css('height', '80px');  
+                toggleContainer.css('padding', '25px 30px');
+            });
+
+            $(document).scroll(function() {
+                var currentScroll = $(this).scrollTop();
+                if (currentScroll > lastScroll) {
+                    toggleContainer.css('padding', '25px 30px');
+                } else { 
+                    toggleContainer.css('padding', '30px');
+                }
+                lastScroll = currentScroll;  
+            });
+
+            scrollLink.click(function(e) {
+                e.preventDefault();
+                $('body, html').animate({
+                  scrollTop: $(this.hash).offset().top
+                }, 1500);
+            });
+        });
+
+        {% for topic in topic_list %}
+        $(document).ready(function() {
+            $('#publication-container-{{topic.name}}').click(function() {
+                var publicationContained = $('#publication-contained-{{topic.name}}');
+                if (publicationContained.css('display') == 'block') {
+                    $.fn.closePublicationContained(publicationContained);
+                    if (publicationContained.next().is('li')) {
+                        setTimeout(function() {
+                            publicationContained.next().animate({
+                                'margin-top': '0'
+                                });
+                        }, 200);
+                    }
+                    else {
+
+                    }
+                } else if (publicationContained.css('display') == 'none') {
+                    $.fn.openPublicationContained(publicationContained);
+                    if (publicationContained.next().is('li')) {
+                      publicationContained.next().animate({
+                        'margin-top': publicationContained.outerHeight() + 30
+                        });
+                    }
+                    else {
+
+                    }
+                } else {
+                    
+                }
+            });
+        });
+        {% endfor %}
+    </script>
+</head>
+
+<body id='top'>    
+    <div id='toggle-sidebar-wrapper'>
+        <div id='toggle-wrapper'>
+            <div id='toggle-container'>
+                <a class='button' id='toggle-button' aria-hidden='true'>+</a>
+            </div>
+        </div>
+        <div id='sidebar-wrapper'>
+            <ul>
+                <div id='remote-controller-wrapper'>
+                    <li>
+                        <a class='close-sidebar-button button' id='index-button'>m</a>
+                        <a class='close-sidebar-button button'>-</a>
+                        <a href='#top' class='close-sidebar-button button scroll'>topo</a>
+                    </li>
+                </div>
+                {% for topic in topic_list %}
+                <li class='publication-container' id='publication-container-{{topic.name}}'><a class='button topic-name'>{{topic.name}}</a></li>
+                    <div class='publication-contained' id='publication-contained-{{topic.name}}' style='position: asbsolute;
+                                                                                                        background-color: #fff;
+                                                                                                        box-shadow: -2px 2px 4px 2px #9b9b9b71 !important;
+                                                                                                        display: none;
+                                                                                                        margin-top: 10px;
+                                                                                                        margin-left: 25px;
+                                                                                                        margin-bottom: 20px;'>
+                    {% for post in topic.postmodel_set.all %}
+                    <li><a href='#{{post.id}}' class='close-sidebar-button-post scroll' class='post-title'>{{post.title}}</a></li>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <header>
+        <div id='blog-title-wrapper'>
+            <h1 id='blog-title'>PASSAGENS</h1>
+        </div>
+    </header>
+    
+    <div id='essay-wrapper'>
+        <div class='mona-lisa'>
+            <a><img src = "/static/blog/img/Apache%20revolver.jpg" title='Apache revolver'></a>
+        </div>
+        {% for post in post_list %}
+        <div class='essay-header'>
+            <h2 class='essay-title'><a href='/pt-br/blog/{{post.id}}' name='published-essay' id='{{post.id}}'>{{post.title}}</a></h2>
+            <div class='essay-date'>{{ post.date|date:"M d, Y" }}</div>
+        </div>
+        <div class='essay'>{{ post.body|safe|linebreaks }}</div>
+        <div class='mona-lisa'>
+            <a><img src="{{ post.image.url }}"></a>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% comment %}
+    {% if is_paginated %}
+        <ul class='pagination'>
+        {% if page_obj.has_previous %}
+            <li><a href='?page={{ page_obj.previous_page_number }}'></a>&laquo;</li>
+        {% else %}
+            <li class='disabled'><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+                <li class='active'><span>{{ i }}<span class='sr-only'>(current)</span></span></li>
+            {% else %}
+                <li><a href='?page={{ i }}'>{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li><a href='?page={{ page_obj.next_page_number }}'></a></li>
+        {% else %}
+            <li class='disabled'><span>&raquo;</span></li>
+        {% endif %}
+        </ul>
+    {% endif %}
+    {% endcomment %}
+
+</body>
+</html>

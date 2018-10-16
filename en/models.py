@@ -31,20 +31,3 @@ class PostModel(models.Model):
 
     class Meta:
         verbose_name_plural = 'posts'
-
-
-
-
-
-
-
-class ContactModel(models.Model):
-    sender_name = models.CharField(max_length=100)
-    sender_email = models.EmailField()
-    subject = models.CharField(max_length=100)
-    body = models.CharField(max_length=1000)
-    date = models.DateTimeField(default=timezone.now)
-
-    class Meta:
-        verbose_name_plural = 'contacts'
-

@@ -1,12 +1,6 @@
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
-from django.views.generic import TemplateView, ListView, FormView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView
 from en.models import PostModel, TopicModel
-#from en.static.toothbrush.scripts.toothbrush import frequency_distribution
-from django.core.mail import send_mail
-from django.core.paginator import Paginator
 
 
 

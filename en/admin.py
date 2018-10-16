@@ -25,19 +25,3 @@ class PostAdmin(admin.ModelAdmin):
         ('Date',    {'fields':  ['date']})
     ]
 admin.site.register(PostModel, PostAdmin)
-
-
-
-
-
-
-
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('sender_name', 'sender_email', 'subject', 'date')
-    list_filter = ['date']
-    fieldsets = [
-        ('Contact', {'fields': ['sender_name', 'sender_email']}),
-        ('Message', {'fields': ['subject', 'body']}),
-        ('Date',    {'fields': ['date']})
-    ]
-admin.site.register(ContactModel, ContactAdmin)

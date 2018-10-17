@@ -1,20 +1,23 @@
 .vscode
 
-*.pyc
-__pycache__
-
+# Migrations
 en/migrations/*.py
 ptbr/migrations/*.py
 home/migrations/*.py
+*.pyc
+__pycache__
+
+# Templates
 home/templates/admin/*
+
+# Static
 home/static/home/js/*
 home/static/index/css/all.min.css
-mysite/settings/prod.py
-mysite/requirements/prod.txt
 mysite/media/blog*
-media/blog/*
-
 *.scss
 *.css.map
 
+# Prod.
+mysite/settings/prod.py
+mysite/requirements/prod.txt
 admin.txt

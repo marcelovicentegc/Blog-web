@@ -9,10 +9,12 @@ home/migrations/*.py
 home/templates/admin/*
 home/static/home/js/*
 home/static/index/css/all.min.css
+mysite/settings/prod.py
+mysite/requirements/prod.txt
+mysite/media/blog*
 media/blog/*
 
 *.scss
 *.css.map
 
 admin.txt
-db.sqlite3

@@ -192,7 +192,9 @@
     
     <div id='essay-wrapper'>
         <div class='mona-lisa'>
-            <a><img src = "/static/blog/img/Apache%20revolver.jpg" title='Apache revolver'></a>
+            {% for artwork in artwork_list %}
+            <img src = "{{ artwork.image.url }}" title='{{ artwork.title }}'>
+            {% endfor %}
         </div>
         {% for post in post_list %}
         <div class='essay-header'>
@@ -205,30 +207,6 @@
         </div>
         {% endfor %}
     </div>
-
-    {% comment %}
-    {% if is_paginated %}
-        <ul class='pagination'>
-        {% if page_obj.has_previous %}
-            <li><a href='?page={{ page_obj.previous_page_number }}'></a>&laquo;</li>
-        {% else %}
-            <li class='disabled'><span>&laquo;</span></li>
-        {% endif %}
-        {% for i in paginator.page_range %}
-            {% if page_obj.number == i %}
-                <li class='active'><span>{{ i }}<span class='sr-only'>(current)</span></span></li>
-            {% else %}
-                <li><a href='?page={{ i }}'>{{ i }}</a></li>
-            {% endif %}
-        {% endfor %}
-        {% if page_obj.has_next %}
-            <li><a href='?page={{ page_obj.next_page_number }}'></a></li>
-        {% else %}
-            <li class='disabled'><span>&raquo;</span></li>
-        {% endif %}
-        </ul>
-    {% endif %}
-    {% endcomment %}
 
 </body>
 </html>

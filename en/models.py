@@ -15,9 +15,6 @@ class TopicModel(models.Model):
 
 
 
-
-
-
 class PostModel(models.Model):
     topic = models.ForeignKey(TopicModel, on_delete=models.CASCADE)
     
@@ -31,3 +28,15 @@ class PostModel(models.Model):
 
     class Meta:
         verbose_name_plural = 'posts'
+
+
+
+class MuseumModel(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='blog', null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural='artworks'

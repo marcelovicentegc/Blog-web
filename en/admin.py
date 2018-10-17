@@ -1,5 +1,15 @@
 from django.contrib import admin
-from en.models import PostModel, TopicModel
+from en.models import MuseumModel, TopicModel, PostModel
+
+
+
+class MuseumAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image')
+    list_filter = ['title']
+    fieldsets = [
+        ('Artwork', {'fields': ['title', 'image']})
+    ]
+admin.site.register(MuseumModel)
 
 
 
@@ -10,9 +20,6 @@ class TopicAdmin(admin.ModelAdmin):
         ('Topic name',  {'fields': ['name']})
     ]
 admin.site.register(TopicModel)
-
-
-
 
 
 

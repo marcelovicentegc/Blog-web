@@ -7,7 +7,7 @@ class Error404(TemplateView):
     template_name = '404.html'
 
     def get(self, request):
-        return render(request, self.template_name)
+        return render(request, self.template_name, status=404)
 
 
 
@@ -15,4 +15,4 @@ class Error500(TemplateView):
     template_name = '500.html'
 
     def get(self, request):
-        return render(request, self.template_name)
+        return render(request, self.template_name, status=500)

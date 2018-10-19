@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P|VT323');
+
+$smallDevice: 479px;
+
+@mixin smallDevice {
+    @media (max-width: #{$smallDevice}) {
+        @content;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        background: #000;
+    }
+    100% {
+        opacity: 0;
+        background: #fff;
+    }
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: #fff;
+    transition: 100ms;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+
+    p {
+        margin: 0;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+    
+        a {
+            text-decoration: none;
+            color: #000;
+            font-size: 4vw;
+            text-transform: lowercase;
+            transition: .2s;
+
+            @include smallDevice() {
+                font-size: 5vw;
+            }
+        }
+
+        a:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .separator:hover {
+            color: #000;
+            cursor: default;
+        }   
+    }
+}
+
+
+::selection {
+    background: #f03838;
+}
+
+
+

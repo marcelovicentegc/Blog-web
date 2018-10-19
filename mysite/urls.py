@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path, re_path
-from django.conf import settings
+from mysite.settings import dev
 from django.conf.urls import handler404, handler500
 from mysite.views import Error404, Error500
 from django.views.static import serve
@@ -32,9 +32,9 @@ urlpatterns = [
 handler404 = Error404.as_view()
 handler500 = Error500.as_view()
 
-if settings.DEBUG:
+if dev.DEBUG:
     urlpatterns += [
         re_path(r'^media/(?P<path>.*)$', serve, {
-            'document_root': settings.MEDIA_ROOT,
+            'document_root': dev.MEDIA_ROOT,
         }),
     ]

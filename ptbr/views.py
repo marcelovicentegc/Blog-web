@@ -10,7 +10,7 @@ class IndexView(TemplateView):
 
 
 class BlogListView(ListView):
-    template_name = 'enblog/newsfeed.html'
+    template_name = 'ptbrblog/newsfeed.html'
     artworks = MuseumModel.objects.all()
     topics = TopicModel.objects.all()
     posts = PostModel.objects.all()

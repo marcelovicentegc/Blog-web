@@ -7,16 +7,16 @@ home/migrations/*.py
 *.pyc
 __pycache__
 
-# Templates
+# Templates collected for local development
 home/templates/admin/*
 
-# Static
+# Static files collected for local development
 home/static/home/js/*
 home/static/index/css/all.min.css
 mysite/static/*
 mysite/media/*
 
-# Prod.
+# Production configuration
 mysite/settings/prod.py
 mysite/requirements/prod.txt
 admin.txt

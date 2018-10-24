@@ -1,3 +1,3 @@
-# Blog
+# Personal site
 
-This is the development version of this personal blog app: https://marcelo.page
+This is the development version of this personal app: https://marcelo.page

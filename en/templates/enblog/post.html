@@ -8,6 +8,7 @@
     <link rel='stylesheet' type='text/css' href="{% static 'blog/css/main_post.css'%}"/>
     <link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+    <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
     <script>
         $(document).ready(function() {
             $.fn.bodyFadeOut = function() {
@@ -56,14 +57,35 @@
     </div>
 
     <div id='essay-wrapper'>
-        <h2 class='essay-title'><a name='published-essay' id='{{post.id}}'>{{object.title}}</a></h2>
-        <p class='essay-date'>{{ object.date|date:"M d, Y" }}</p>
+        <div id='essay-header'>
+            <h2 class='essay-title'><a name='published-essay' id='{{object.id}}'>{{object.title}}</a></h2>
+            <div class='essay-date'>
+                {{ object.date|date:"M d, Y" }}
+            </div>
+        </div>
         <div class='essay'>{{ object.body|safe|linebreaks }}</div>
         <div class='mona-lisa'>
+        {% if object.image.url != None %}
             <a><img src="{{ object.image.url }}"></a>
+        {% endif %}
         </div>
-    </div>
+        <div id='disqus_thread'></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = 'https://marcelo.page/en/blog/{{object.id}}';
+                this.page.identifier = '{{object.id}}';
+                this.page.title = '{{object.title}}';
+            };
 
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://marcelo-page.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 </body>
 </html>
 

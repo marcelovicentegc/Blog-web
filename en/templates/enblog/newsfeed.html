@@ -8,6 +8,7 @@
     <link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <link rel='stylesheet' type='text/css' href="{% static 'blog/css/main.css'%}"/>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+    <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
     <script>
         $(document).ready(function() {
             $.fn.bodyFadeOut = function() {
@@ -192,21 +193,28 @@
     
     <div id='essay-wrapper'>
         <div class='mona-lisa'>
-            {% for artwork in artwork_list %}
+        {% for artwork in artwork_list %}
+            {% if artwork.title == '' %}
             <img src = "{{ artwork.image.url }}" title='{{ artwork.title }}'>
-            {% endfor %}
+            {% endif %}
+        {% endfor %}
         </div>
         {% for post in post_list %}
         <div class='essay-header'>
-            <h2 class='essay-title'><a href='/en/blog/{{post.id}}' name='published-essay' id='{{post.id}}'>{{post.title}}</a></h2>
-            <div class='essay-date'>{{ post.date|date:"M d, Y" }}</div>
+            <h2 class='essay-title'><a href='/en/blog/{{post.slug}}' name='published-essay' id='{{post.id}}'>{{post.title}}</a></h2>
+            <div class='essay-date'>
+                {{ post.date|date:"M d, Y" }}
+                <div class ='disqus-comment-count' data-disqus-identifier='{{post.id}}'>
+                </div>
+            </div>
         </div>
         <div class='essay'>{{ post.body|safe|linebreaks }}</div>
         <div class='mona-lisa'>
+            {% if post.image.url != None %}
             <a><img src="{{ post.image.url }}"></a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
-
 </body>
 </html>

@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.db.models.signals import pre_save
+from home.utils import unique_slug_generator
+
 
 
 
@@ -14,11 +17,11 @@ class TopicModel(models.Model):
 
 
 
-
 class PostModel(models.Model):
     topic = models.ForeignKey(TopicModel, on_delete=models.CASCADE)
     
     title = models.CharField(max_length=140)
+    slug = models.SlugField(max_length=142, unique=True)
     body = models.TextField()
     date = models.DateTimeField()
     image = models.ImageField(upload_to='blog', null=True, blank=True)
@@ -28,7 +31,7 @@ class PostModel(models.Model):
 
     class Meta:
         verbose_name_plural = 'posts'
-
+        
 
 
 class MuseumModel(models.Model):
@@ -40,3 +43,11 @@ class MuseumModel(models.Model):
 
     class Meta:
         verbose_name_plural='artworks'
+
+
+
+def slug_save(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance, instance.title, instance.slug)
+    
+pre_save.connect(slug_save, sender=PostModel)

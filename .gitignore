@@ -1,9 +1,7 @@
 .vscode
 
 # Migrations
-en/migrations/*.py
-ptbr/migrations/*.py
-home/migrations/*.py
+migrations
 *.pyc
 __pycache__
 
@@ -14,7 +12,7 @@ home/templates/admin/*
 home/static/home/js/*
 home/static/index/css/all.min.css
 mysite/static/*
-mysite/media/*
+media
 
 # Production configuration
 mysite/settings/prod.py

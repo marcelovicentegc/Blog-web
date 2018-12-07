@@ -9,6 +9,8 @@ __pycache__
 home/templates/admin/*
 
 # Static files collected for local development
+*.scss
+*.css.map
 home/static/home/js/*
 home/static/index/css/all.min.css
 mysite/static/*
@@ -18,3 +20,4 @@ media
 mysite/settings/prod.py
 mysite/requirements/prod.txt
 admin.txt
+google_analytics.txt

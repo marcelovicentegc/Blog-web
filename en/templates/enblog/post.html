@@ -9,42 +9,7 @@
     <link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
     <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
-    <script>
-        $(document).ready(function() {
-            $.fn.bodyFadeOut = function() {
-			    var body = $('body');
-    			body.css('animation-name', 'fadeOut');
-	        	body.css('animation-duration', '200ms');
-    	        body.css('animation-timing-function', 'ease-in-out');
-        	    body.css('animation-iteration-count', '1');
-        		body.css('animation-fill-mode', 'forwards');
-                body.css('animation-play-state', 'running');
-		    };
-        });
-
-        $(document).ready(function() { 
-            var blogButton = $('#blog-button');
-            var toggleContainer = $('#toggle-container');
-            var lastScroll = 0;
-
-            blogButton.click(function() {
-                $.fn.bodyFadeOut();
-                setTimeout(function() {
-					window.location.href='/en/blog/'},
-				200);
-            });
-
-            $(document).scroll(function() {
-                var currentScroll = $(this).scrollTop();
-                if (currentScroll > lastScroll) {
-                    toggleContainer.css('padding', '25px 30px');
-                } else { 
-                    toggleContainer.css('padding', '30px');
-                }
-                lastScroll = currentScroll;  
-            });
-        }); 
-    </script>
+    <script src="{% static 'blog/js/post.js' %}"></script>
 </head>
 
 <body id='top'>    
@@ -70,20 +35,7 @@
         {% endif %}
         </div>
         <div id='disqus_thread'></div>
-        <script>
-            var disqus_config = function () {
-                this.page.url = 'https://marcelo.page/en/blog/{{object.id}}';
-                this.page.identifier = '{{object.id}}';
-                this.page.title = '{{object.title}}';
-            };
-
-            (function() {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://marcelo-page.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
+        <script src="{% static 'blog/js/disqusEn.js' %}"></script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </body>

@@ -44,7 +44,7 @@ class MuseumModel(models.Model):
 
     class Meta:
         verbose_name_plural='artworks'
-
+        get_latest_by = ['date']
 
 
 def slug_save(sender, instance, *args, **kwargs):

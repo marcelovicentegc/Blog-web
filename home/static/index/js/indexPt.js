@@ -4,7 +4,7 @@ $(document).ready(function() {
     blogButton.click(function() {
         $.fn.bodyFadeOut();
         setTimeout(function() {
-            window.location.href='/ptbr/blog/'},
+            window.location.href='/pt-br/blog/'},
         200);
     });
 });

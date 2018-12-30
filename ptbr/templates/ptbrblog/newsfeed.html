@@ -2,14 +2,14 @@
 <html lang='eng'>
 <head>
     {% load static %}
-    <title> Alleyways | Marcelo Cardoso </title>
+    <title> Passagens | Marcelo Cardoso </title>
     <meta charset='utf8'/>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <link rel='stylesheet' type='text/css' href="{% static 'blog/css/main.css'%}"/>
     <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
     <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
-    <script src="{% static 'blog/js/newsFeed.js' %}"
+    <script src="{% static 'blog/js/newsFeedPt.js' %}"></script>
     <script>
         {% for topic in topic_list %}
         $(document).ready(function() {
@@ -81,7 +81,7 @@
     </div>
     <header>
         <div id='blog-title-wrapper'>
-            <h1 id='blog-title'>Alleyways</h1>
+            <h1 id='blog-title'>Passagens</h1>
         </div>
     </header>
     
@@ -91,7 +91,7 @@
         </div>
         {% for post in post_list %}
         <div class='essay-header'>
-            <h2 class='essay-title'><a href='/en/blog/{{post.slug}}' name='published-essay' id='{{post.id}}'>{{post.title}}</a></h2>
+            <h2 class='essay-title'><a href='/pt-br/blog/{{post.slug}}' name='published-essay' id='{{post.id}}'>{{post.title}}</a></h2>
             <div class='essay-date'>
                 {{ post.date|date:"M d, Y" }}
                 <div class ='disqus-comment-count' data-disqus-identifier='{{post.id}}'>

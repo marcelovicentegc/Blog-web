@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from en.models import MuseumModel, PostModel, TopicModel
 
@@ -11,17 +12,18 @@ class IndexView(TemplateView):
 
 class BlogListView(ListView):
     template_name = 'enblog/newsfeed.html'
+    model = PostModel
+    queryset = PostModel.objects.order_by('-date')[:25]
     artwork = MuseumModel.objects.latest('date')
     topics = TopicModel.objects.all()
-    posts = PostModel.objects.order_by('-date')[:25]
     # paginate_by = ...
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['artwork'] = self.artwork
-        context['post_list'] = self.posts
-        context['topic_list'] = self.topics
-        return context
+        kwargs['post_list'] = self.queryset
+        kwargs['artwork'] = self.artwork
+        kwargs['topic_list'] = self.topics
+        return super(BlogListView, self).get_context_data(**kwargs)
+
 
 
 

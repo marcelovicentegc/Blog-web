@@ -9,21 +9,8 @@
     <link rel='stylesheet' type='text/css' href="{% static 'blog/css/main.css'%}"/>
     <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
     <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
-<<<<<<< HEAD
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128443240-1"></script>
-	<script>
-	 	window.dataLayer = window.dataLayer || [];
-  		function gtag(){dataLayer.push(arguments);}
-  		gtag('js', new Date());
-
-  		gtag('config', 'UA-128443240-1');
-	</script>
-
-=======
     <script src="{% static 'blog/js/newsFeedPt.js' %}"></script>    
     {% include "universal/google.html" %}
->>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
     <script>
         {% for topic in topic_list %}
         $(document).ready(function() {

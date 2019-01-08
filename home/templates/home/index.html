@@ -8,64 +8,8 @@
 	<link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <link rel='stylesheet' href="{% static 'home/css/main.css'%}" type="text/css" />
 	<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
-<<<<<<< HEAD
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128443240-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-  		function gtag(){dataLayer.push(arguments);}
-  		gtag('js', new Date());
-
-  		gtag('config', 'UA-128443240-1');
-	</script>
-
-	<script>
-	  	$(document).ready(function() {
-            $.fn.bodyFadeOut = function() {
-			    var body = $('body');
-    			body.css('animation-name', 'fadeOut');
-	        	body.css('animation-duration', '200ms');
-    	        body.css('animation-timing-function', 'ease-in-out');
-        	    body.css('animation-iteration-count', '1');
-        		body.css('animation-fill-mode', 'forwards');
-                body.css('animation-play-state', 'running');
-		    };
-        });	
-		$(document).ready(function() {
-			var buttonClass = $('.button');
-			var buttonEn = $('#en');
-			var buttonPt = $('#pt');
-			var buttonFr = $('#fr');
-			var buttonEs = $('#es');
-    		var body = $('body');
-
-			buttonClass.mouseover(function() {
-				 body.css('background-color', 'black'); 
-			});
-
-			buttonClass.mouseout(function() {
-				body.css('background-color', 'white');
-			})
-
-			buttonEn.click(function() {
-				$.fn.bodyFadeOut();
-				setTimeout(function() {
-					window.location.href='/en/'},
-				200);
-			});
-			
-			buttonPt.click(function() {
-				$.fn.bodyFadeOut();
-				setTimeout(function() {
-					window.location.href='/pt-br/'},
-				200);
-			});
-		});
-	</script>
-=======
 	<script src="{% static 'home/js/home.js' %}"></script>
 	{% include "universal/google.html" %}
->>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 </head>
 <body>
 	<p><a class='button' id='en'>en </a><a class='separator'>|<a class='button' id='pt'> pt</a></p>

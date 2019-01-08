@@ -1,6 +1,4 @@
 from django.db import models
-
-from django.db import models
 from django.utils import timezone
 from django.db.models.signals import pre_save
 from home.utils import unique_slug_generator

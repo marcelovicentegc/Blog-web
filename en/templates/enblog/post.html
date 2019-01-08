@@ -9,57 +9,8 @@
     <link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
     <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
-<<<<<<< HEAD
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128443240-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
- 	 	gtag('js', new Date());
-
-  		gtag('config', 'UA-128443240-1');
-	</script>
-
-    <script>
-        $(document).ready(function() {
-            $.fn.bodyFadeOut = function() {
-			    var body = $('body');
-    			body.css('animation-name', 'fadeOut');
-	        	body.css('animation-duration', '200ms');
-    	        body.css('animation-timing-function', 'ease-in-out');
-        	    body.css('animation-iteration-count', '1');
-        		body.css('animation-fill-mode', 'forwards');
-                body.css('animation-play-state', 'running');
-		    };
-        });
-
-        $(document).ready(function() { 
-            var blogButton = $('#blog-button');
-            var toggleContainer = $('#toggle-container');
-            var lastScroll = 0;
-
-            blogButton.click(function() {
-                $.fn.bodyFadeOut();
-                setTimeout(function() {
-					window.location.href='/en/blog/'},
-				200);
-            });
-
-            $(document).scroll(function() {
-                var currentScroll = $(this).scrollTop();
-                if (currentScroll > lastScroll) {
-                    toggleContainer.css('padding', '25px 30px');
-                } else { 
-                    toggleContainer.css('padding', '30px');
-                }
-                lastScroll = currentScroll;  
-            });
-        }); 
-    </script>
-=======
     <script src="{% static 'blog/js/post.js' %}"></script>
     {% include "universal/google.html" %}
->>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 </head>
 
 <body id='top'>    

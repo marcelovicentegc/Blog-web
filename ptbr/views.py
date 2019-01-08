@@ -11,21 +11,21 @@ class IndexView(TemplateView):
 
 class BlogListView(ListView):
     template_name = 'ptbrblog/newsfeed.html'
-    artworks = MuseumModel.objects.all()
+    model = PostModel
+    queryset = PostModel.objects.order_by('-date')[:25]
+    artwork = MuseumModel.objects.latest('date')
     topics = TopicModel.objects.all()
-    posts = PostModel.objects.all()
     # paginate_by = ...
-    queryset = posts.order_by('-date')[:25]
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['artwork_list'] = self.artworks
-        context['post_list'] = self.queryset
-        context['topic_list'] = self.topics
-        return context
+        kwargs['post_list'] = self.queryset
+        kwargs['artwork'] = self.artwork
+        kwargs['topic_list'] = self.topics
+        return super(BlogListView, self).get_context_data(**kwargs)
 
 
 
 class BlogDetailView(DetailView):
     template_name = 'ptbrblog/post.html'
     model = PostModel
+

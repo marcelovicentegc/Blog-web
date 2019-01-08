@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='pt-br'>
+<html lang='eng'>
 <head>
 	{% load static %}
     <title> Marcelo Cardoso </title>
@@ -10,6 +10,7 @@
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/97/three.js'></script>
 	<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+<<<<<<< HEAD
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128443240-1"></script>
 	<script>
@@ -101,6 +102,11 @@
 			});
 		});
 	</script>
+=======
+    <script src="{% static 'index/js/index.js' %}"></script>
+	<script src="{% static 'index/js/indexPt.js' %}"></script>
+	{% include "universal/google.html" %}
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 </head>
 <body>
 	<div id='wrapper'>
@@ -115,7 +121,7 @@
 			<h1>OLÁ, EU SOU O MARCELO</h1>
 			<div id='contact-menu'>
 				<li>
-					<a href='mailto:marcelovicentegc@gmail.com'><i class="fas fa-envelope"></i></a>
+					<a href='marcelovicentegc@gmail.com'><i class="fas fa-envelope"></i></a>
 					<a href='https://github.com/marcelovicentegc' target='_blank'><i class='fab fa-github'></i></a>
 					<a href='https://www.linkedin.com/in/marcelo-cardoso-b77261144/' target='_blank'><i class='fab fa-linkedin-in'></i></a>
 					<a href='https://www.strava.com/athletes/35289893' target='_blank'><i class='fab fa-strava'></i></a>
@@ -125,55 +131,6 @@
 		<div id='pegafrito'>
 		</div>
 	</div>
-	<script>
-		var camera, scene, renderer;
-		var geometry, material, mesh;
-					
-		function init() {
-			container = document.getElementById('pegafrito');
-
-			camera = new THREE.PerspectiveCamera(75, container.clientWidth/container.clientHeight, 0.1, 10);
-			camera.position.z = 1;
-
-			scene = new THREE.Scene({
-				autoUpdate: true
-			})
-			scene.background = new THREE.Color(0xffffff);
-							
-			// TorusKnotGeometry looks nice
-			// Background + diamond-like surface looks nice
-			geometry = new THREE.SphereGeometry(.5, 15, 21);
-			material = new THREE.MeshBasicMaterial({
-				color: 0x000000, wireframe: true
-			})
-			mesh = new THREE.Mesh(geometry, material);
-			scene.add(mesh);
-
-			renderer = new THREE.WebGLRenderer({
-				antialias: true
-			});
-
-			renderer.setSize(container.clientWidth, container.clientHeight);
-			container.appendChild(renderer.domElement);
-				
-		};
-
-		function animate(time) {
-			mesh.rotation.x = time * 0.0008;
-			mesh.rotation.y = time * 0.0006;
-
-			renderer.render(scene, camera);
-			requestAnimationFrame(animate);
-		};
-	
-		init();
-		requestAnimationFrame(animate);
-					
-		window.addEventListener('resize', function () {
-			renderer.setSize(container.clientWidth, container.clientHeight);
-  				camera.aspect = container.clientWidth / container.clientHeight;
-  				camera.updateProjectionMatrix();
-		});
-	</script>
+	<script src="{% static 'index/js/globe.js' %}"></script>
 </body>
 </html>

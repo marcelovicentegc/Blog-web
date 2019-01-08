@@ -7,18 +7,30 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 
 with open('/var/www/marcelo.page/sensitive/sentry_dsn.txt') as f:
+<<<<<<< HEAD
         SENTRY_DSN = f.read().strip()
 
 sentry_sdk.init(
     dsn='https://530276f18aa14d7fb534a9652f49808e@sentry.io/1305425',
         integrations=[DjangoIntegration()]
+=======
+    SENTRY_DSN = f.read().strip()
+
+sentry_sdk.init(
+    dsn='https://530276f18aa14d7fb534a9652f49808e@sentry.io/1305425',
+    integrations=[DjangoIntegration()]
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 )
 
 DEBUG = False
 
 with open('/var/www/marcelo.page/sensitive/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
+<<<<<<< HEAD
                     
+=======
+    
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 with open('/var/www/marcelo.page/sensitive/db_page_name.txt') as f:
     DB_PAGE_NAME = f.read().strip()
 
@@ -27,7 +39,11 @@ with open('/var/www/marcelo.page/sensitive/db_page_user.txt') as f:
 
 with open('/var/www/marcelo.page/sensitive/db_page_password.txt') as f:
     DB_PAGE_PASSWORD = f.read().strip()
+<<<<<<< HEAD
                                                 
+=======
+    
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 ALLOWED_HOSTS = ['marcelo.page', 'www.marcelo.page', '198.199.69.102']
 
 DATABASES = {
@@ -37,8 +53,13 @@ DATABASES = {
         'USER': DB_PAGE_USER,
         'PASSWORD': DB_PAGE_PASSWORD,
         'HOST': 'localhost',
+<<<<<<< HEAD
         'PORT': '', # 5432
         }
+=======
+        'PORT': '',
+    }
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 }
 
 STATIC_ROOT = '/var/www/marcelo.page/static/'
@@ -52,4 +73,8 @@ SECURE_SSL_REDIRECT = True
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 63072000
+<<<<<<< HEAD
 X_FRAME_OPTIONS = 'DENY' 
+=======
+X_FRAME_OPTIONS = 'DENY' 
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860

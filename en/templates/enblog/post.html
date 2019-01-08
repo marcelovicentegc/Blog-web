@@ -9,6 +9,7 @@
     <link rel='shortcut icon' type='image/png' href='/static/home/img/m.jpg' sizes='32x32'/>
     <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
     <script id="dsq-count-scr" src="//marcelo-page.disqus.com/count.js" async></script>
+<<<<<<< HEAD
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128443240-1"></script>
 	<script>
@@ -55,6 +56,10 @@
             });
         }); 
     </script>
+=======
+    <script src="{% static 'blog/js/post.js' %}"></script>
+    {% include "universal/google.html" %}
+>>>>>>> a01d37cb7304aeb2989d3b79cec8abc58fac2860
 </head>
 
 <body id='top'>    
@@ -80,20 +85,7 @@
         {% endif %}
         </div>
         <div id='disqus_thread'></div>
-        <script>
-            var disqus_config = function () {
-                this.page.url = 'https://marcelo.page/en/blog/{{object.id}}';
-                this.page.identifier = '{{object.id}}';
-                this.page.title = '{{object.title}}';
-            };
-
-            (function() {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://marcelo-page.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
+        <script src="{% static 'blog/js/disqusEn.js' %}"></script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </body>

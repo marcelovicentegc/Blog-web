@@ -23,7 +23,7 @@ class PostModel(models.Model):
     title = models.CharField(max_length=140)
     slug = models.SlugField(max_length=142, unique=True)
     body = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to='blog', null=True, blank=True)
 
     def __str__(self):
@@ -37,13 +37,14 @@ class PostModel(models.Model):
 class MuseumModel(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='blog', null=True, blank=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
 
     class Meta:
         verbose_name_plural='artworks'
-
+        get_latest_by = ['date']
 
 
 def slug_save(sender, instance, *args, **kwargs):

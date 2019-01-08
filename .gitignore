@@ -13,8 +13,3 @@ home/templates/admin/*
 *.css.map
 mysite/static/*
 media
-
-# Production configuration
-mysite/settings/prod.py
-admin.txt
-google_analytics.txt

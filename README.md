@@ -1,3 +1,5 @@
-# Personal site
+# Personal-web
 
-This is the development version of this personal app: https://marcelo.page
+## Demo
+This is, currently, my personal site. 
+<img src="https://github.com/marcelovicentegc/Personal-web/blob/master/Personal-web.gif" width="640" height="360" />

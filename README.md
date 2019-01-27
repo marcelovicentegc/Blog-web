@@ -1,6 +1,6 @@
 # Personal-web
 
-This is a personal-blog-themed website designed for training purposes, and my former personal site.
+This is a personal-blog-themed website designed for training purposes... and my former personal site.
 
 ## Demo
 

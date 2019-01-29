@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 
 
-class Error404(TemplateView):
+class Error400(TemplateView):
     template_name = '400.html'
 
     def get(self, request):
@@ -11,7 +11,7 @@ class Error404(TemplateView):
 
 
 
-class Error500(TemplateView):
+class Error403(TemplateView):
     template_name = '403.html'
 
     def get(self, request):
@@ -19,7 +19,7 @@ class Error500(TemplateView):
 
 
 
-class Error500(TemplateView):
+class Error404(TemplateView):
     template_name = '404.html'
 
     def get(self, request):

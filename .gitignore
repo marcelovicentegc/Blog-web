@@ -4,6 +4,7 @@
 migrations
 *.pyc
 __pycache__
+db.sqlite3
 
 # Templates collected for local development
 home/templates/admin/*

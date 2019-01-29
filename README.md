@@ -21,8 +21,8 @@ This is a personal-blog-themed website designed for training purposes and it is 
 ### On a Mac/Linux
 1. Clone this repo: `git clone https://github.com/marcelovicentegc/Personal-web.git`
 2. Create a virtual environment: `virtualenv venv_personalweb`
-3. Change directories and activate the virtual environment: `source venv_personalweb/bin/activate`
-4. Change directories and install requirements: `cd ../../Personal-web/mysite && pip install -r base.txt`
+3. Activate the virtual environment: `source venv_personalweb/bin/activate`
+4. Change directories and install requirements: `cd Personal-web/mysite && pip install -r base.txt`
 5. Change directories and make migrations: `cd ../../ && python manage.py makemigrations`
 6. Migrate: `python manage.py migrate`
 7. Create a super user: `python manage.py createsuperuser`

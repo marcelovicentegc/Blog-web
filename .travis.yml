@@ -1,0 +1,18 @@
+language: python
+
+python:
+  - "3.6.5"
+
+before_install:
+  - cd mysite/requirements
+
+install:
+  - pip install -r base.txt
+
+before_script:
+  - cd ../..
+  - python manage.py makemigrations
+  - python manage.py migrate
+
+script:
+  - python manage.py test

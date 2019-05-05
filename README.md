@@ -1,3 +1,5 @@
+[![Build Status](https://img.shields.io/travis/marcelovicentegc/Personal-web.svg?branch=master&style=flat-square)](https://travis-ci.org/marcelovicentegc/Personal-web)
+
 # Personal-web
 
 This is a personal-blog-themed website designed for training purposes and it is my former personal site as well.
